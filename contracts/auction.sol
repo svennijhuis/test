@@ -22,6 +22,7 @@ contract DosAuction {
 }
 
 
+//Secure auction that cannot be DoS'd
 contract SecureAuction {
   address currentFrontrunner;
   uint    currentBid;
