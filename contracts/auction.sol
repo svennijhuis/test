@@ -1,11 +1,11 @@
 pragma solidity ^0.4.15;
 
-//Auction susceptible to DoS attack ads
+//Auction susceptible to DoS attack
 contract DosAuction {
   address currentFrontrunner;
   uint currentBid;
 
-  //Takes in bid, refunding the frontrunner if they are outbid
+
   function bid() payable {
     require(msg.value > currentBid);
 
