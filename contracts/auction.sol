@@ -1,6 +1,6 @@
 pragma solidity ^0.4.15;
 
-//Auction susceptible to DoS attack
+//Auction susceptible to DoS attack ads
 contract DosAuction {
   address currentFrontrunner;
   uint currentBid;

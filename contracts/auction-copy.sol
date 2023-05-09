@@ -1,11 +1,11 @@
 pragma solidity ^0.4.15;
 
-//Auction susceptible to DoS attack
+//Auction susceptible to DoS attack dsz
 contract DosAuction {
   address currentFrontrunner;
   uint currentBid;
 
-
+  //Takes in bid, refunding the frontrunner if they are outbid
   function bid() payable {
     require(msg.value > currentBid);
 
@@ -22,6 +22,7 @@ contract DosAuction {
 }
 
 
+//Secure auction that cannot be DoS'd
 contract SecureAuction {
   address currentFrontrunner;
   uint    currentBid;
