@@ -44,7 +44,7 @@ contract SecureAuction {
   function withdraw() external {
     //Do all state manipulation before external call to
     //avoid reentrancy attack
-    uint refund = refunds[msg.sender];
+
     refunds[msg.sender] = 0;
 
     msg.sender.send(refund);
