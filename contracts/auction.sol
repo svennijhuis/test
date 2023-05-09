@@ -24,7 +24,7 @@ contract DosAuction {
 
 //Secure auction that cannot be DoS'd
 contract SecureAuction {
-  address currentFrontrunner;
+
   uint    currentBid;
   //Store refunds in mapping to avoid DoS
   mapping(address => uint) refunds;
