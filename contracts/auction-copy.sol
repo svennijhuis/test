@@ -5,7 +5,7 @@ contract DosAuction {
   address currentFrontrunner;
   uint currentBid;
 
-  //Takes in bid, refunding the frontrunner if they are outbid
+
   function bid() payable {
     require(msg.value > currentBid);
 
