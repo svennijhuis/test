@@ -5,6 +5,7 @@ contract DosAuction {
   address currentFrontrunner;
   uint currentBid;
 
+  //Takes in bid, refunding the frontrunner if they are outbid
   function bid() payable {
     require(msg.value > currentBid);
 
@@ -44,7 +45,7 @@ contract SecureAuction {
   function withdraw() external {
     //Do all state manipulation before external call to
     //avoid reentrancy attack
-
+    uint refund = refunds[msg.sender];
     refunds[msg.sender] = 0;
 
     msg.sender.send(refund);
