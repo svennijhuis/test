@@ -10,7 +10,7 @@ contract DosAuction {
     require(msg.value > currentBid);
 
 
-    //Therefore a frontrunner who always fails will win
+
     if (currentFrontrunner != 0) {
       //E.g. if recipients fallback function is just revert()
       require(currentFrontrunner.send(currentBid));
