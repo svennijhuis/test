@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 contract SecureAuction {
     address payable public currentFrontrunner;
     uint public currentBid;
-    mapping(address => uint) public refusnds;
+    mapping(address => uint) public refunds;
 
     event BidPlaced(address bidder, uint bidAmount);
     event RefundClaimed(address bidder, uint refundAmount);
