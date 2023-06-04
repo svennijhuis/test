@@ -1,36 +1,50 @@
-pragma solidity ^0.8.0;
+pragma solidity ^0.4.15;
 
+//Auction susceptible to DoS attack
+contract DosAuction {
+    address currentFrontrunner;
+    uint currentBid;
+
+    //Takes in bid, refunding the frontrunner if they are outbid
+    function bid() payable {
+        require(msg.value > currentBid);
+
+        if (currentFrontrunner != 0) {
+            //E.g. if recipients fallback function is just revert()
+            require(currentFrontrunner.send(currentBid));
+        }
+
+        currentFrontrunner = msg.sender;
+        currentBid = msg.value;
+    }
+}
+
+//Secure auction that cannot be DoS'd
 contract SecureAuction {
-    address payable public currentFrontrunner;
-    uint public currentBid;
-    mapping(address => uint) public refunds;
+    address currentFrontrunner;
+    uint currentBid;
+    //Store refunds in mapping to avoid DoS
+    mapping(address => uint) refunds;
 
-    event BidPlaced(address bidder, uint bidAmount);
-    event RefundClaimed(address bidder, uint refundAmount);
-
+    //Avoids "pushing" balance to users favoring "pull" architecture
     function bid() external payable {
-        require(
-            msg.value > currentBid,
-            "Bid amount must be higher than current bid"
-        );
+        require(msg.value > currentBid);
 
-        if (currentFrontrunner != address(0)) {
+        if (currentFrontrunner != 0) {
             refunds[currentFrontrunner] += currentBid;
         }
 
-        currentFrontrunner = payable(msg.sender);
+        currentFrontrunner = msg.sender;
         currentBid = msg.value;
-
-        emit BidPlaced(msg.sender, msg.value);
     }
 
+    //Allows users to get their refund from auction
     function withdraw() external {
+        //Do all state manipulation before external call to
+        //avoid reentrancy attack
         uint refund = refunds[msg.sender];
-        require(refund > 0, "No refund available");
-
         refunds[msg.sender] = 0;
-        payable(msg.sender).transfer(refund);
 
-        emit RefundClaimed(msg.sender, refund);
+        msg.sender.send(refund);
     }
 }
