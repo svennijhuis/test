@@ -18,7 +18,7 @@ contract SecureAuction {
             refunds[currentFrontrunner] += currentBid;
         }
 
-        currentFrontrunnera = payable(msg.sender);
+        currentFrontrunner = payable(msg.sender);
         currentBid = msg.value;
 
         emit BidPlaced(msg.sender, msg.value);
