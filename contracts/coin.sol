@@ -166,7 +166,7 @@ contract MyAdvancedToken is owned, TokenERC20 {
     /* This generates a public event on the blockchain that will notify clients */
     event FrozenFunds(address target, bool frozen);
 
-    /* Initializes contract with initial supply tokens to the creator of the contract */
+    /* Initializes contract with initial supply tokens to the creator of the c
     function MyAdvancedToken(
         string tokenName,
         string tokenSymbol
