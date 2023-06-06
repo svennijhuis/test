@@ -179,7 +179,7 @@ contract MyAdvancedToken is owned, TokenERC20 {
         require(balanceOf[_to] + _value >= balanceOf[_to]); // Check for overflows
         require(!frozenAccount[_from]); // Check if sender is frozen
         require(!frozenAccount[_to]); // Check if recipient is frozen
-        balanceOf[_from] -= _value; // Subtract from the sender
+        balanceOf[_from] -= _value; // Subtract from the sende
         balanceOf[_to] += _value; // Add the same to the recipient
         emit Transfer(_from, _to, _value);
     }
