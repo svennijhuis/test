@@ -9,7 +9,7 @@ contract SecureAuction {
     event RefundClaimed(address bidder, uint refundAmount);
 
     function bid() external payable {
-        require(msg.value > currentBid, "Bid amount must be higher than bid");
+        require(msg.value > currentBid, "Bid amount must be higher than c bid");
 
         if (currentFrontrunner != address(0)) {
             refunds[currentFrontrunner] += currentBid;

@@ -3,7 +3,7 @@
 // Solidity version 
 pragma solidity >= 0.8.0 < 0.9.0;
 
-// Create contract 
+// Create contract here
 contract HelloWorld{
     // owner address 
     address payable private owner;
