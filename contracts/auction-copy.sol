@@ -1,6 +1,6 @@
 pragma solidity ^0.8.0;
 
-contract SecureAuction {
+contract SecureAuctiona {
     address payable public currentFrontrunner;
     uint public currentBid;
     mapping(address => uint) public refunds;
@@ -11,7 +11,7 @@ contract SecureAuction {
     function bid() external payable {
         require(
             msg.value > currentBid,
-            "Bid amount must be higher than current bid"
+            "Bid amount must be higher than current bi"
         );
 
         if (currentFrontrunner != address(0)) {

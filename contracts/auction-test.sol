@@ -21,14 +21,14 @@ contract DosAuction {
     }
 }
 
-//Secure auction that cannot be DoS'd
+//Secure auction that cannot be DoS'
 contract SecureAuction {
     address currentFrontrunner;
     uint currentBid;
     //Store refunds in mapping to avoid DoS
     mapping(address => uint) refunds;
 
-    //Avoids "pushing" balance to users favoring "pull" architecture
+    //Avoids "pushing" balance to users favoring "pull" architectue
     function bid() external payable {
         require(msg.value > currentBid);
 

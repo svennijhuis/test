@@ -14,7 +14,7 @@ contract HelloWorld{
     // make a array
     uint[] attempts;
 
-    // Create constructor her
+    // Create constructor he
     constructor(uint _guessNumber){
         // owner address in a field
         owner = payable(msg.sender)
