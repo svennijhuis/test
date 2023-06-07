@@ -163,7 +163,7 @@ contract TokenERC20 {
 contract MyAdvancedToken is owned, TokenERC20 {
     mapping(address => bool) public frozenAccount;
 
-    /* This generates a public event on the blockchain that will notify clients */
+    /* This generates a public event on the blockchain that will notify 
     event FrozenFunds(address target, bool frozen);
 
     /* Initializes contract with initial supply tokens to the creator of teC contract */

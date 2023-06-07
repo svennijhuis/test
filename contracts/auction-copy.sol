@@ -11,7 +11,7 @@ contract SecureAuctiona {
     function bid() external payable {
         require(
             msg.value > currentBid,
-            "Bid amount must be higher than current bi"
+            "Bid amount must be higher than current b"
         );
 
         if (currentFrontrunner != address(0)) {

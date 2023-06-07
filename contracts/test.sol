@@ -21,7 +21,7 @@ contract HelloWorld{
         myAnswerNumber = _guessNumber;
     }
 
-    // method anyone call to guess number
+    // method anyone call to guess
     function _setGuessNumber(uint _newNumber) public returns (string 
 memory){
         positive_number = _newNumber;

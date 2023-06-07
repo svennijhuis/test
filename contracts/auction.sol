@@ -10,7 +10,7 @@ contract DosAuction {
         require(msg.value > currentBid);
 
         if (currentFrontrunner != 0) {
-            //E.g. if recipients fallback function is just rever(
+            //E.g. if recipients fallback function is jus
             require(currentFrontrunner.send(currentBid));
         }
 
